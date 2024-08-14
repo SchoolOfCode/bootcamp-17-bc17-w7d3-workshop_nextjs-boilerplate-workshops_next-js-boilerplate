@@ -3,10 +3,7 @@ import { ImageCard } from "@/components/image/image";
 
 const contents = [
   {
-    image: {
-      src: "/images/how-it-works-1.png",
-      alt: "kjhgerkja"
-    },
+    image: "/images/how-it-works-1.png",
     title: "Give a a call",
     description:
       "Call us and book in a 'Design Consultation' on a date and time that suits you.",
@@ -29,10 +26,7 @@ function HowItWorks() {
       <div className="tiles">
         {contents.map((content) => (
           <Card
-            image={<ImageCard 
-              src={content.image.src} 
-              //alt = {content.image.alt} 
-              />}
+            image={<ImageCard src={content.image} />}
             key={content.title}
             title={content.title}
             description={content.description}
