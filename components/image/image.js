@@ -1,10 +1,12 @@
 import Image from 'next/image'
 
-export default function Image(props) {
+export function ImageCard(props) {
     return (
       <Image
-        src={props.search}
+        src={props.src}
         alt={props.alt}
+        width={500} 
+        height={500} 
       />
     )
 }

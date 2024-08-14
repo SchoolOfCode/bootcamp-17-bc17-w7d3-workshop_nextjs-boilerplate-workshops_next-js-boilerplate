@@ -1,11 +1,11 @@
-import Image from "@/components/image/image";
+import { ImageCard } from "@/components/image/image";
 
 function Hero () {
     return (
         <section className="hero-section">
-            <Image
-             src={"../public/images/hero-mobile.png"}
-             alt={"Fireplace with a stool next to it"}
+            <ImageCard
+            src="/images/hero-mobile.png"             
+            alt="Fireplace with a stool next to it"
              />
 
             <div className="hero-description">
