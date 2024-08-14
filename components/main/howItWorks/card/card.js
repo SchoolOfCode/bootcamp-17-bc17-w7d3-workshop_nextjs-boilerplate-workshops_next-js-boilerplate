@@ -1,7 +1,7 @@
 function Card(props) {
   return (
     <article className="tile">
-      {/* <img srcSet="#" alt="" className="tile-image" /> */}
+      {props.image}
       <h3>{props.title}</h3>
       <p>{props.description}</p>
     </article>
