@@ -23,7 +23,11 @@ function HowItWorks() {
       <h2 className="how-it-works-text">How It Works</h2>
       <div className="tiles">
         {contents.map((content) => (
-          <Card title={content.title} description={content.description} />
+          <Card
+            key={content.title}
+            title={content.title}
+            description={content.description}
+          />
         ))}
 
         {/* <Card
