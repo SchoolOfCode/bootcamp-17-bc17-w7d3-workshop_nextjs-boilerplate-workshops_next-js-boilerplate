@@ -1,12 +1,12 @@
 import Hero from "./hero/hero"
 import HowItWorks from "./how-it-works/HowItWorks"
-import Link from 'next/link'
+
 
 export default function Main() {
     return (
         <>
             <main className="site-main">
-            <Link href="/founders">Link to founders page</Link>
+      
             <Hero/>
 
             <section className="how-it-works">
