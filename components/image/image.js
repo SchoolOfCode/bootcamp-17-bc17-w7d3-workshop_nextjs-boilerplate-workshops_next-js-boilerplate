@@ -5,8 +5,8 @@ export function ImageCard(props) {
       <Image
         src={props.src}
         alt={props.alt}
-        width={500} 
-        height={500} 
+        width={300} 
+        height={300} 
       />
     )
 }
