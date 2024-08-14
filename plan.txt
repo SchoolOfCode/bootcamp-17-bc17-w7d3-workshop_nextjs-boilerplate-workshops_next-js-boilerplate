@@ -1,0 +1,26 @@
+Step One:
+Clear out the default page Next.js home page that is shown. This means delete the css in "/app/page.css"✅, then make the component in "/app/page.js" just return the words "home page" for now. Check the page still loads and that it shows those words.✅
+
+Now it's time to move move across the top level of you application. In your current Vite app this is probably where you render something like the the top level page wrapper and inside that the Header, Main and Footer components.
+
+In the world of Next.js you would put this stuff in the "/app/layout.js" file. A layout is a thing that wraps a page. On the average website most pages on the site will have the same header and footer but the middle bit changes. The idea of a layout is that it allows you to provide your pages with a wrapper of sorts.
+
+If you look carefully at the "/app/layout.js" file you will see it renders "{ children }". Children in this case is the page component being passed to the layout. So the home page will render where you see the world children.
+
+So once you move across your top level you could have something like ...
+
+<html lang="en">
+      <body className={inter.className}>
+
+          <Header />
+               {children}
+           <Footer />
+
+       </body>
+ </html>
+
+Now when a page loads, the page component will load where you see "children". So in your home page component, "/app/page.js", you could put the rest of the home page (main and everything in it).
+
+Any "global" css (stuff to style the body or wrapper etc) can go in "/app/global.css". 
+
+To move across your Google Font you can see the default Next.js app is using the Google Font Inter. Go to "/app/layout.js" and replace "Inter" with "Aleo" to get our font 🙂.
