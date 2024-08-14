@@ -24,3 +24,44 @@ Now when a page loads, the page component will load where you see "children". So
 Any "global" css (stuff to style the body or wrapper etc) can go in "/app/global.css". 
 
 To move across your Google Font you can see the default Next.js app is using the Google Font Inter. Go to "/app/layout.js" and replace "Inter" with "Aleo" to get our font 🙂.
+
+
+
+
+Step Two:
+
+It's time to move all of your components from yesterday's Vite application into the Next.js application first. Do this component by component. Keep checking checking you can import and use each component once you've moved it across. Don't rush.
+
+If you're wondering where to move your components to in the new Next.js project: make a new folder at the top of the project called "/src", inside that you can have your components folder. You could probably just copy across the whole "components" folder from the Vite app but it's safer to do it component by component to make sure everything works. You will find you need to update things!
+
+As you move a component across -  import it into the home page ("/app/page.js") and make sure you can use it.
+
+Just so you know ... Next.js has it's own way of doing images. You will need to use their <Image /> component in your components.
+
+This will mean updating some of your components as you move them across (Image component docs - https://nextjs.org/docs/app/building-your-application/optimizing/images). As well as using the Image component from Next.js you will need to copy all your images across from the Vite app to the Next app. Put them into the "/public" folder.
+
+Once all your components are moved across and everything is right in the world, move to step three!
+
+
+
+
+
+Step Three
+
+It's time to create the new page called "founders" in the Next.js app.
+
+In Next.js the way that we create new pages is by creating folders and files - you would say that the routing is file based. So ... at the moment we have a home page and that is all we have. The home page component is "/app/page.js" - the home page is accessed at "http://localhost:3000/".
+
+If we want to make a new page called "contact" we would create a new folder "/app/contact" and inside that we would have a file called "page.js". If you want to understand in more depth look here - https://nextjs.org/docs/app/building-your-application/routing/pages.
+
+Now you know how to make a new page - get started making our new "/founders" page.
+
+We would suggest you make the new folder and file, and create a super simple component that just returns "<h1>Founders</h1>" for now. Once you think you've made a new page save your work and see if you can navigate to that page in your browser ("http://localhost:<PORT>/founders"). Great success!
+
+Now see if you can add a Next.js "<Link href="/founders"></Link>" component somewhere on your home page. If you need to see how to import and use the Link component look here: https://nextjs.org/docs/app/api-reference/components/link
+
+Once you have added the link to the home page somewhere, try to click it - does it take you to the new page? Well done - you've now got a two page application!
+
+Come back and complete the founders page later - keep it simple for now. Focus on getting the two pages, then making a menu that opens and closes (state), then being able to click a link in that menu to get to the new page. 
+
+Now you have the two pages move onto step four!

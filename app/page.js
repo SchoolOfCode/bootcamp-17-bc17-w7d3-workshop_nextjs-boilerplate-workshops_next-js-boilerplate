@@ -1,6 +1,10 @@
-import Image from "next/image";
 import "./page.css";
+import Main from '../src/components/main/Main'
 
 export default function Home() {
-  return <>Home page</>;
+  return (
+    <>
+      <Main />
+    </>
+  );
 }
