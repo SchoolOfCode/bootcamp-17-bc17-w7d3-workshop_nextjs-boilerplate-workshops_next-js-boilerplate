@@ -1,13 +1,17 @@
 Planning:
 Pre-work from Weds:
+
 Step One:
 Setting up folders and files
+
 Step Two:
 Moving over all html and jsx into appropriate files/folders
 Breaking down the components into: header, main, footer > subfolders within these for different components
+
 Step Three:
 Using the main to encompass the new founders page
 Linking founders page on main (home page)
+
 Step Four:
 Creating state - features to toggle between main and founders page
 

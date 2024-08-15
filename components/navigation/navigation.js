@@ -1,13 +1,13 @@
-// import links and useState
-// import ImageCard
+import Link from "next/link";
+import { ImageCard } from "@/components/image/image";
+import ImageCard from "./components/image/image.js";
 
 function Navigation(props) {
-  const state = false; //create useState function
-
+  const state []; //create useState function
+const [stateMenu, setStateMenu] = useState(null);
   // handler openMenu
   function openMenu() {
-    // change sate (false to true)
-    console.log("open");
+    setStateMenu(true);
   }
 
   // handler closeMenu
@@ -23,7 +23,8 @@ function Navigation(props) {
       {state && (
         <div>
           <button onClick={closeMenu}>{"x"}</button>
-          {props.link}
+         <Link href="/"> Home </Link>
+         <Link href="/founders"> Founders </Link>
         </div>
       )}
     </>
