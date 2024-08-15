@@ -68,7 +68,9 @@ body {
 }
 .founder-image {
   width: 100%;
-  margin: 0 auto;
+  height: 50%;
+  object-fit: cover;
+  padding: 0 0 4rem 0;
 }
 
 /* HERO */

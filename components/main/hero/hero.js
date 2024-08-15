@@ -6,8 +6,8 @@ function Hero() {
       <ImageCard
         src="/images/hero-mobile.png"
         alt="Fireplace with a stool next to it"
-        width="340"
-        height="340"
+        width="360"
+        height="360"
         className="hero-image"
       />
 
