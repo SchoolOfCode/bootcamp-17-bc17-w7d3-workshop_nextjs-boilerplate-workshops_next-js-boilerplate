@@ -13,7 +13,7 @@ export default function MenuButton() {
 
     return (
         <>
-            <div>
+            <div id="menu-button">
                 <button onClick={handleClick}>
                     <Image 
                     src= "/resources/founders/menu-open-button.png"
@@ -22,10 +22,18 @@ export default function MenuButton() {
                     height={25}/>
                     </button>
                 { menuStatus && 
-                    <p>
-                        <Link href="/">Home</Link>
-                        <Link href="/founders">Founders</Link>
-                    </p> 
+                    <div id="menu-open">
+                        <ul>
+                            <li><button onClick={handleClick}><Image 
+                                src= "/resources/founders/menu-close-button.png"
+                                alt="menu-close-button"
+                                width={25}
+                                height={25}
+                            /></button></li>
+                            <li><Link href="/">Home</Link></li>
+                            <li><Link href="/founders">Founders</Link></li>
+                        </ul>
+                    </div> 
                     }
             </div>
         </>
