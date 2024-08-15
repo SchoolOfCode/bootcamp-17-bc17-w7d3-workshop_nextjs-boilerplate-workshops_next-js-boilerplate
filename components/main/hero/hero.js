@@ -8,6 +8,7 @@ function Hero() {
         alt="Fireplace with a stool next to it"
         width="340"
         height="340"
+        className="hero-image"
       />
 
       <div className="hero-description">

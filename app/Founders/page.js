@@ -1,7 +1,5 @@
-import Link from "next/link";
-import { ImageCard } from "@/components/image/image";
-import Card from "@/components/main/howItWorks/card/card";
+import Founders from "@/components/meetTheArtisans/founders";
 
-export default function Founders() {
-  return <h1>founders page</h1>;
+export default function FoundersMain() {
+  return <Founders />;
 }

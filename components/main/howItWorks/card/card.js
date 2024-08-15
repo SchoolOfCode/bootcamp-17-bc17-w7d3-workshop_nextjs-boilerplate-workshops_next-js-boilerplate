@@ -1,9 +1,9 @@
 function Card(props) {
   return (
-    <article className="tile">
+    <article className="card">
       {props.image}
-      <h3>{props.title}</h3>
-      <p>{props.description}</p>
+      <h3 className="card-title">{props.title}</h3>
+      <p className="card-description">{props.description}</p>
     </article>
   );
 }

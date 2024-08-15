@@ -1,19 +1,16 @@
-// app/layout.js
-"use client"; // Add this line at the top
+"use client";
 import { useState } from "react";
-import { Inter } from "next/font/google";
+import { Aleo } from "next/font/google";
 import "./globals.css";
 import Header from "../components/header/header.js";
 import Footer from "../components/footer/footer.js";
-import Main from "../components/main/main.js";
-import Founders from "./founders/page";
 
-const inter = Inter({ subsets: ["latin"] });
+const aleo = Aleo({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={aleo.className}>
         <Header />
         {children}
         <Footer />

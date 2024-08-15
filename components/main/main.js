@@ -5,6 +5,7 @@ function Main() {
   return (
     <>
       <Hero />
+      {/* new element */}
       <HowItWorks />
     </>
   );

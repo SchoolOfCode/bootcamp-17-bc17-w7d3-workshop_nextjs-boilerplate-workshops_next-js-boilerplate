@@ -17,20 +17,37 @@ function Navigation() {
 
   return (
     <>
-      <button onClick={openMenu}>
+      <button className="menu-button" onClick={openMenu}>
         <ImageCard
           src="/images/menu-open-button.png"
           alt="any"
-          width="40"
-          height="40"
+          width="35"
+          height="30"
         />
       </button>
 
       {stateMenu && (
-        <div>
-          <button onClick={closeMenu}>x</button>
-          <Link href="/"> Home </Link>
-          <Link href="/founders"> Founders </Link>
+        <div class="navigation">
+          <button className="menu-button" onClick={closeMenu}>
+            <ImageCard
+              src="/images/menu-close-button.png"
+              alt="any"
+              width="35"
+              height="30"
+            />
+          </button>
+          <Link className="navigation-link" onClick={closeMenu} href="/">
+            {" "}
+            Home{" "}
+          </Link>
+          <Link
+            className="navigation-link"
+            onClick={closeMenu}
+            href="/founders"
+          >
+            {" "}
+            Founders{" "}
+          </Link>
         </div>
       )}
     </>
