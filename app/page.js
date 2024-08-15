@@ -1,6 +1,6 @@
-import Image from "next/image";
+import Main from "../components/main/main";
 import "./page.css";
 
 export default function Home() {
-  return <p>Homepage</p>;
+  return <Main />;
 }

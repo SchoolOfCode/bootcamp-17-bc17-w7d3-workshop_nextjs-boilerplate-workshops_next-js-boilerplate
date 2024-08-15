@@ -1,15 +1,10 @@
-import Image from 'next/image'
+import Navigation from "../navigation/navigation";
 
 function Header(props) {
   return (
     <header className="header-container">
       <h1>🔥 Fireplace Palace</h1>
-      <Image 
-      onClick={props.onClick}
-      src="/images/menu-open-button.png"
-      alt="burger menu"
-      height="50"
-      width="50"/>
+      <Navigation />
     </header>
   );
 }
