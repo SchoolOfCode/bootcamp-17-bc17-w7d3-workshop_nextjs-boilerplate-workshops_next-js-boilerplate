@@ -19,6 +19,7 @@ function Navigation(props) {
   return (
     <>
       <button onClick={openMenu}>{"burger menu"}</button>
+      {/* this will not display due to a false status */}
       {state && (
         <div>
           <button onClick={closeMenu}>{"x"}</button>
