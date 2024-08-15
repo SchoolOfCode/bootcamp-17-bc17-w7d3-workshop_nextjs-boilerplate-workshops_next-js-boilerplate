@@ -30,8 +30,9 @@ export default function MenuButton() {
                                 width={25}
                                 height={25}
                             /></button></li>
-                            <li><Link href="/">Home</Link></li>
-                            <li><Link href="/founders">Founders</Link></li>
+                            <li><Link href="/" onClick={handleClick} >Home</Link></li>
+                            
+                            <li><Link href="/founders" onClick={handleClick} >Founders</Link></li>
                         </ul>
                     </div> 
                     }
