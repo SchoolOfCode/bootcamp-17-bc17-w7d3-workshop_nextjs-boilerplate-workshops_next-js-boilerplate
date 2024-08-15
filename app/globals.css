@@ -4,6 +4,7 @@ html {
 body {
   box-sizing: border-box;
   width: 100%;
+
   margin: 0;
   padding: 4rem 1rem 1rem 1rem;
   font-size: 1.6rem;
@@ -16,9 +17,10 @@ body {
   justify-content: space-between;
   background-color: white;
   width: 100%;
+
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   padding: 1rem;
   font-size: 1.2rem;
 }
