@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from "next/image";
 
 export default function MenuButton() {
     const [menuStatus, setMenuStatus] = useState(false)
@@ -13,7 +14,13 @@ export default function MenuButton() {
     return (
         <>
             <div>
-                <button onClick={handleClick}>Menu</button>
+                <button onClick={handleClick}>
+                    <Image 
+                    src= "/resources/founders/menu-open-button.png"
+                    alt="menu-open-button"
+                    width={25}
+                    height={25}/>
+                    </button>
                 { menuStatus && 
                     <p>
                         <Link href="/">Home</Link>
