@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Header onClick={() => setPage(false)} />
+        <Header onClick={() => setPage(!page)} />
         {page ? <Main /> : <Founders />}
         <Footer />
       </body>

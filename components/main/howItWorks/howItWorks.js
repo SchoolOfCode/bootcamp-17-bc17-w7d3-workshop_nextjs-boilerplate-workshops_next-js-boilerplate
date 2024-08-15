@@ -8,6 +8,8 @@ const contents = [
     title: "Give a a call",
     description:
       "Call us and book in a 'Design Consultation' on a date and time that suits you.",
+    width: 300,
+    height: 300
   },
   {
     image: "/images/how-it-works-2.png",
@@ -15,12 +17,16 @@ const contents = [
     title: "We come to you",
     description:
       "We come to your home to do an assessment of the space and to your style preference.",
+      width: 300,
+      height: 300
   },
   {
     image: "/images/how-it-works-3.png",
     alt: "description",
     title: "We reccomend",
     description: "We send you a bespoke set of fireplace recommendations.",
+    width: 300,
+    height: 300
   },
 ];
 
@@ -31,7 +37,7 @@ function HowItWorks() {
       <div className="tiles">
         {contents.map((content) => (
           <Card
-            image={<ImageCard src={content.image}  alt={content.alt}/>}
+            image={<ImageCard src={content.image}  alt={content.alt} width={content.width} height={content.height}/>}
             key={content.title}
             title={content.title}
             description={content.description}

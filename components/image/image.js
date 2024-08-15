@@ -3,10 +3,11 @@ import Image from 'next/image'
 export function ImageCard(props) {
     return (
       <Image
+        onClick={props.onClick}
         src={props.src}
         alt={props.alt}
-        width={300} 
-        height={300} 
+        width={props.width} 
+        height={props.height} 
       />
     )
 }
