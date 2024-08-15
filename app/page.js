@@ -2,7 +2,5 @@ import Image from "next/image";
 import "./page.css";
 
 export default function Home() {
-  return (
-    <p>Homepage</p>
-  );
+  return <p>Homepage</p>;
 }
