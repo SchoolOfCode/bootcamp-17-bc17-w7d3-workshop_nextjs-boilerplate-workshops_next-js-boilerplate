@@ -86,13 +86,15 @@ function Review() {
         </div>
       </section>
 
-      <section className="conditionalContainer">
-        <p className="conditionalText"> {countryData.text} </p>
-        <p className="conditionalInfo">
-          <span>{countryData.author}</span> <span> &nbsp; - &nbsp; </span>
-          <span>{countryData.location}</span>
-        </p>
-      </section>
+      {selectedCountry && (
+        <section className="conditionalContainer">
+          <p className="conditionalText"> {countryData.text} </p>
+          <p className="conditionalInfo">
+            <span>{countryData.author}</span> <span> &nbsp; - &nbsp; </span>
+            <span>{countryData.location}</span>
+          </p>
+        </section>
+      )}
     </>
   );
 }
