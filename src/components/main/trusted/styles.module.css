@@ -4,6 +4,46 @@
 }
 
 .active {
-background-color: orange;
-color: black;
+    background-color: orange;
+    color: black;
+}
+
+.notactive, .active {
+    width: 28%;
+    height: 2.5rem;
+    font-size: larger;
+    border: none;
+    border-radius: 5px;
+}
+
+.trustedContainer {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 10px 0px 30px 15px
+}
+
+.buttonList {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 1rem;
+}
+
+.review {
+    padding-top: 1.5rem;
+}
+
+.reviewText {
+    background-color: hsla(0, 0%, 89%, 0.925);
+    border-radius: 5px;
+    height: 6rem;
+    text-align: center;
+    align-content: center;
+    padding: 10px
+}
+
+.reviewAuthor {
+    text-align: right;
+    text-decoration: underline;
+    padding-top: 1rem;
 }

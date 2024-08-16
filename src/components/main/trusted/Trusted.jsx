@@ -16,7 +16,6 @@ export default function Trusted() {
             setTrustedData(null)
         } else {
             setSelectedCountry(e.target.value)
-            e.target.className = styles.active
         }
     }
 
@@ -32,19 +31,21 @@ export default function Trusted() {
 
     return (
         <>
-            <h3>Trusted.</h3>
-            <p>We've got thousands of happy customers all over the UK. Choose your country to see the latest review:</p>
-            <div className="button-list">
-                <button className={styles.notactive} onClick={handleClick} value="England">England</button>
-                <button className={styles.notactive} onClick={handleClick} value="Wales">Wales</button>
-                <button className={styles.notactive} onClick={handleClick} value="Scotland">Scotland</button>
+            <div className={styles.trustedContainer}>
+                <h3>Trusted.</h3>
+                <p>We've got thousands of happy customers all over the UK. Choose your country to see the latest review:</p>
+                <div className={styles.buttonList}>
+                    <button className={selectedCountry === "England" ? styles.active : styles.notactive} onClick={handleClick} value="England">England</button>
+                    <button className={selectedCountry === "Wales" ? styles.active : styles.notactive} onClick={handleClick} value="Wales">Wales</button>
+                    <button className={selectedCountry === "Scotland" ? styles.active : styles.notactive} onClick={handleClick} value="Scotland">Scotland</button>
+                </div>
+                {trustedData && 
+                    <div className={styles.review}>
+                        <p className={styles.reviewText}>{trustedData.text}</p> {/* Display the review's text */}
+                        <p className={styles.reviewAuthor}>{trustedData.author} - {trustedData.location}</p> {/* Display the author and location */}
+                </div>
+                }
             </div>
-            {trustedData && 
-                <div>
-                    <p>{trustedData.text}</p> {/* Display the review's text */}
-                    <p>{trustedData.author} - {trustedData.location}</p> {/* Display the author and location */}
-              </div>
-            }
         </>
       );
 }
