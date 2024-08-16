@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react';
+import styles from "./styles.module.css";
 
 export default function Trusted() {
 
@@ -15,6 +16,7 @@ export default function Trusted() {
             setTrustedData(null)
         } else {
             setSelectedCountry(e.target.value)
+            e.target.className = styles.active
         }
     }
 
@@ -33,9 +35,9 @@ export default function Trusted() {
             <h3>Trusted.</h3>
             <p>We've got thousands of happy customers all over the UK. Choose your country to see the latest review:</p>
             <div className="button-list">
-                <button onClick={handleClick} value="England">England</button>
-                <button onClick={handleClick} value="Wales">Wales</button>
-                <button onClick={handleClick} value="Scotland">Scotland</button>
+                <button className={styles.notactive} onClick={handleClick} value="England">England</button>
+                <button className={styles.notactive} onClick={handleClick} value="Wales">Wales</button>
+                <button className={styles.notactive} onClick={handleClick} value="Scotland">Scotland</button>
             </div>
             {trustedData && 
                 <div>
