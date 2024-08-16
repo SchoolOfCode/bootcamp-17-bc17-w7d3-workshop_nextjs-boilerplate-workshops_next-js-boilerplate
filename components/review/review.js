@@ -1,11 +1,17 @@
 //import use state
 
 function Review() {
-  // use state hock
+  // https://legacy.reactjs.org/docs/hooks-state.html
+  // useState hock
+  // set initial value to null
 
+  // https://react.dev/reference/react/useEffect
+  // useEffect hock
+  // https://www.w3schools.com/jsref/api_fetch.asp
   //fetch data
   //parse data
   //store data (useState variable)
+  // listen for useState changes
 
   //clickHandler function
 
