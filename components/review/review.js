@@ -14,6 +14,8 @@ function Review() {
   // listen for useState changes
 
   //clickHandler function
+  //store value
+  //change color for selected
 
   return;
   // <container>
