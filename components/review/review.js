@@ -18,6 +18,11 @@ function Review() {
   //change color for selected
 
   return;
+  // https://files.slack.com/files-pri/T072XV4SXB9-F07H514KR7W/image20240815141956.png
+  // https://files.slack.com/files-pri/T072XV4SXB9-F07H2G5GRC2/image20240815142009.png
+  // https://files.slack.com/files-pri/T072XV4SXB9-F07H517FC4U/image20240815142040.png
+  // https://files.slack.com/files-pri/T072XV4SXB9-F07GVT1HYBG/image20240815142621.png
+  //
   // <container>
   //title
   //description
