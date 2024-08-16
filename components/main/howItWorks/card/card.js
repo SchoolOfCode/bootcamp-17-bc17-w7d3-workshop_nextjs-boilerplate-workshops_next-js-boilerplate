@@ -1,3 +1,4 @@
+// creating the card component to itterate our data 
 function Card(props) {
   return (
     <article className="card">

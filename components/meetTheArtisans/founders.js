@@ -1,3 +1,5 @@
+'use client';
+
 import { ImageCard } from "@/components/image/image";
 function Founders() {
   return (

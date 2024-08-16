@@ -52,19 +52,6 @@ function HowItWorks() {
           />
         ))}
 
-        {/* <Card
-          title="Give a a call"
-          description="Call us and book in a 'Design Consultation' on a date and time that suits you."
-        />
-        <Card
-          title="We come to you"
-          description="We come to your home to do an assessment of the space and to
-                  your style preference."
-        />
-        <Card
-          title="We reccomend"
-          description="We send you a bespoke set of fireplace recommendations."
-        /> */}
       </div>
     </section>
   );
