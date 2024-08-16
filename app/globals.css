@@ -97,6 +97,42 @@ body {
 .number-span {
   color: #fff2e4;
 }
+
+/*REVIEW*/
+
+.reviewButtonContainer{
+  display: flex;
+  justify-content: space-evenly;
+
+}
+
+.reviewTitle {
+  font-size: 2.5rem;
+  margin: 1rem 0;
+  text-align: center;
+  font-weight: 700;
+  padding: 1.6rem 0;
+}
+
+.reviewDesc {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.reviewButton {
+  border: none; 
+  height: 3rem;
+  width: 9rem;
+  background-color: grey;
+  color: white;
+}
+
+.active {
+  background-color: #f1911b;
+  color: black;
+}
+
+
 /* MAIN */
 .cards-container {
   width: 100%;
