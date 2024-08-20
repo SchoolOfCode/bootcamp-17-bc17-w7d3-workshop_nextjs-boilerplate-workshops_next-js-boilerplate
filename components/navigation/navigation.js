@@ -48,6 +48,10 @@ function Navigation() {
             {" "}
             Founders{" "}
           </Link>
+          <Link className="" onClick={closeMenu} href="/form">
+            {" "}
+            Form{" "}
+          </Link>
         </div>
       )}
     </>
