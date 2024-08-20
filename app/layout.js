@@ -1,7 +1,7 @@
 import { Aleo } from "next/font/google";
 import "./globals.css";
-import Header from '../src/components/header/header'
-import Footer from '../src/components/footer/footer'
+import Header from './src/components/header/header'
+import Footer from './src/components/footer/footer'
 
 const aleo = Aleo({ subsets: ["latin"] });
 
