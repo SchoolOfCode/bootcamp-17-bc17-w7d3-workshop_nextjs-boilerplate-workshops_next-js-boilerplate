@@ -1,25 +1,17 @@
 import { useState } from "react";
 export default function ContactForm() {
-  const [name, setName] = useState("");
-  const [age, setage] = useState("");
+  const [formData, setFormName] = useState({ name: "", age: "" });
 
-  const formData = {
-    name: name,
-    age: age,
+  const formDatas = {
+    name: "",
+    age: "",
   };
-
-  //   formData.name = onChange;
-  //   formData.age = 18;
-  //   formData.friend = "Ian";
 
   console.log(formData);
 
   function handleOnChange(e) {
-    setName(e.target.value);
-    setage(e.target.value);
-    // console.log("dom value", e.target.value);
-    // console.log("onChange value", onChange);
-    console.log(formData);
+    // setage(e.target.value);
+    console.log(e.target.value);
   }
 
   return (
@@ -30,7 +22,12 @@ export default function ContactForm() {
           <label>
             {" "}
             name
-            <input onChange={handleOnChange} type="text" />
+            <input
+              onChange={(e) => {
+                handleOnChange(e);
+              }}
+              type="text"
+            />
           </label>
         </div>
 

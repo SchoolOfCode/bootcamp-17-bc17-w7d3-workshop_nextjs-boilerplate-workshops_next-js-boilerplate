@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 
 function Review() {
   const [selectedCountry, setSelectedCountry] = useState(null);
-  const [countryData, setCountryData] = useState([]);git 
+  const [countryData, setCountryData] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -19,7 +19,6 @@ function Review() {
   function clickHandler(value) {
     setSelectedCountry(value);
   }
-
 
   return (
     <>
@@ -80,4 +79,4 @@ function Review() {
   );
 }
 
-export default Review; 
+export default Review;
