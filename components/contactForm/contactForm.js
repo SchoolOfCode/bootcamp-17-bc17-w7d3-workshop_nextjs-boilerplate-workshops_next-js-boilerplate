@@ -37,6 +37,34 @@ export default function ContactForm() {
     }
 }
 
+// this is how we could use Switch loop instead of If
+  // switch (e.target.name) {
+  //     case "fullName":
+  //         setFullName(e.target.value);
+  //         break;
+  //     case "postCode":
+  //         setPostcode(e.target.value);
+  //         break;
+  //     case "addressNumber":
+  //         setAddressNumber(e.target.value);
+  //         break;
+  //     case "cityName":
+  //         setCityName(e.target.value);
+  //         break;
+  //     case "phoneNumber":
+  //         setNumber(e.target.value);
+  //         break;
+  //     case "emailAddress":
+  //         setEmail(e.target.value);
+  //         break;
+  //     default:
+  //         console.log("the field is empty");
+  //         break;
+  // }
+
+  console.log(fullName, postcode, addressNumber, cityName, number, email);
+}
+
   return (
     <>
       <h2>Design Booking</h2>
@@ -95,4 +123,4 @@ export default function ContactForm() {
     </>
   );
 
-}
+  }
