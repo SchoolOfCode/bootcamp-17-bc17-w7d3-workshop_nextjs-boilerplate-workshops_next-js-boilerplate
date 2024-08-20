@@ -6,10 +6,39 @@ export default function ContactForm() {
 
   function handleNameChange (value) {
     setNameState (value.target.value)
-    console.log(value);
-    console.log(value.target.name)
+    // console.log(value);
+    // console.log(value.target.name)
+
+    
   }
   
+  if (value.target.name === "fullName") 
+  setNameState(value.target.value)
+
+    switch (value) {
+        case 1:
+            console.log("i is 1");
+            break;
+        case 2:
+            console.log("i is 2");
+            break;
+        case 3:
+            console.log("i is 3");
+            break;
+        case 4:
+            console.log("i is 4");
+            break;
+        case 5:
+            console.log("i is 5");
+            break;
+        default:
+            console.log("This will not be executed");
+            break;
+    }
+
+
+
+
   console.log(nameState)
 
   return (
