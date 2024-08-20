@@ -17,16 +17,14 @@ So once you move across your top level you could have something like ...
            <Footer />
 
        </body>
+
  </html>
 
 Now when a page loads, the page component will load where you see "children". So in your home page component, "/app/page.js", you could put the rest of the home page (main and everything in it).
 
-Any "global" css (stuff to style the body or wrapper etc) can go in "/app/global.css". 
+Any "global" css (stuff to style the body or wrapper etc) can go in "/app/global.css".
 
 To move across your Google Font you can see the default Next.js app is using the Google Font Inter. Go to "/app/layout.js" and replace "Inter" with "Aleo" to get our font 🙂.
-
-
-
 
 Step Two:✅
 
@@ -34,17 +32,13 @@ It's time to move all of your components from yesterday's Vite application into 
 
 If you're wondering where to move your components to in the new Next.js project: make a new folder at the top of the project called "/src", inside that you can have your components folder. You could probably just copy across the whole "components" folder from the Vite app but it's safer to do it component by component to make sure everything works. You will find you need to update things!
 
-As you move a component across -  import it into the home page ("/app/page.js") and make sure you can use it.
+As you move a component across - import it into the home page ("/app/page.js") and make sure you can use it.
 
 Just so you know ... Next.js has it's own way of doing images. You will need to use their <Image /> component in your components.
 
 This will mean updating some of your components as you move them across (Image component docs - https://nextjs.org/docs/app/building-your-application/optimizing/images). As well as using the Image component from Next.js you will need to copy all your images across from the Vite app to the Next app. Put them into the "/public" folder.
 
 Once all your components are moved across and everything is right in the world, move to step three!
-
-
-
-
 
 Step Three✅
 
@@ -62,11 +56,11 @@ Now see if you can add a Next.js "<Link href="/founders"></Link>" component some
 
 Once you have added the link to the home page somewhere, try to click it - does it take you to the new page? Well done - you've now got a two page application!
 
-Come back and complete the founders page later - keep it simple for now. Focus on getting the two pages, then making a menu that opens and closes (state), then being able to click a link in that menu to get to the new page. 
+Come back and complete the founders page later - keep it simple for now. Focus on getting the two pages, then making a menu that opens and closes (state), then being able to click a link in that menu to get to the new page.
 
 Now you have the two pages move onto step four!
 
-Step Four 
+Step Four
 
 The next thing to do is to try and get some simple state working. It sounds like you might need some simple toggle (off/on) type state. Since it's going to be used in the header you might consider adding your state there. If you think you've created a simple bit of state try to console log it 🙂.
 
@@ -79,3 +73,14 @@ You have some simple toggle state (off/on or open/closed) in your header.
 You can change the state with a click of a button.
 
 Now all you need to do is use that bit of state ("menuToggle" maybe) to show/hide a menu. The rest is all CSS. When the menu is open it's full screen and it shows: the menu close button, a link to the home page, a link to the founders page.
+
+### Client Brief: All The Forms
+
+### Objectives:
+
+Users should see a link on the home page saying "Book Consultation", they should not see the phone number anymore.✅
+Users should be able to click the link and go to a "Design Booking" page ("/booking")
+When a user reaches the "Design Booking" page they should see a simple form that matches the designs you've been given.
+When a user submits the form it should validate that no fields are empty.
+If there is an empty form field show an error.
+If there is no error then console log the form data 🙂 (don't worry about posting the data anywhere).
