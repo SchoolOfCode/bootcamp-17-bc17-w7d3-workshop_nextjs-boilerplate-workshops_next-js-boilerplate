@@ -1,34 +1,41 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 export default function ContactForm() {
-  const [nameState, setNameState] = useState("");
+  
+  const [fullName, setFullName] = useState("");
+  const [postcode, setPostcode] = useState("");
+  const [addressNumber, setAddressNumber] = useState("");
+  const [cityName, setCityName] = useState("");
+  const [number, setNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [formValid, setFormValid] = useState(null);
 
-  function handleNameChange(e) {
+  function handleChange(e) {
     console.log(e.target.value);
     console.log(e.target.name);
-    switch (e) {
-      case value.target.name === "fullName":
-        setNameState(e.target.value);
-        break;
-      case value.target.name === "postCode":
-        // update
-        break;
-      case value.target.name === "addressNumber":
-        // update
-        break;
-      case value.target.name === "cityName":
-        // update
-        break;
-      default:
+
+    if (e.target.name === "fullName" ) {
+        setFullName(e.target.value);
+    } else if (e.target.name === "postcode") {
+        setPostcode(e.target.value);
+    } else if (e.target.name === "addressNumber") {
+        setAddressNumber(e.target.value);
+    } else if (e.target.name === "cityName") {
+        setCityName(e.target.value);
+    } else if (e.target.name === "phoneNumber") {
+        setNumber(e.target.value);
+    } else if (e.target.name === "emailAddress") {
+        setEmail(e.target.value);
+    } else {
         console.log("the field is empty");
-        break;
     }
-  }
 
-  // if (value.target.name === "fullName")
-  // setNameState(value.target.value)
-
-  console.log(nameState);
+    if (fullName && postcode && addressNumber && cityName && number && email != 0 ) {
+      console.log("all done!")
+    } else {
+      console.log("At least one of the fields is empty"); 
+    }
+}
 
   return (
     <>
@@ -42,32 +49,43 @@ export default function ContactForm() {
               type="text"
               name="fullName"
               onChange={(event) => {
-                handleNameChange(event);
+                handleChange(event);
               }}
             />
           </label>
           <label>
             Postcode
-            <input type="text" name="postcode" />
+            <input type="text" name="postcode" 
+            onChange={(event) => {
+              handleChange(event);
+            }}/>
           </label>
           <label>
             House/Flat Number and Street Name
-            <input type="Text" name="addressNumber" />
+            <input type="Text" name="addressNumber" onChange={(event) => {
+                handleChange(event);
+                }} />
           </label>
           <label>
             City
-            <input name="cityName" type="Text" />
+            <input name="cityName" type="Text" onChange={(event) => {
+                handleChange(event);
+              }} />
           </label>
         </fieldset>
         <fieldset>
           <legend>Contact Information:</legend>
           <label>
             Phone Number
-            <input name="phoneNumber" type="number" />
+            <input name="phoneNumber" type="number" onChange={(event) => {
+                handleChange(event);
+              }}/>
           </label>
           <label>
             Email Address
-            <input name="emailAddress" type="email" />
+            <input name="emailAddress" type="email" onChange={(event) => {
+                handleChange(event);
+              }} />
           </label>
         </fieldset>
         <button type="submit" value="submit">
@@ -76,4 +94,5 @@ export default function ContactForm() {
       </form>
     </>
   );
+
 }
