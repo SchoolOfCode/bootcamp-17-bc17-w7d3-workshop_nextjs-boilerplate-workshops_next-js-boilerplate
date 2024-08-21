@@ -1,88 +1,136 @@
 "use client";
 import { useState, useEffect, useReducer } from "react";
 
-// set up initial state
-// set up reducer function
-// import use reducer
-// implement useRedeucer in the contactForm
-// create action to apply to it
-
 const initialState = {
   data: {
-    fullName: "",
+    fullName: {value: "", isTouched: false},
+    postcode: {value: "", isTouched: false},
+    addressNumber: {value: "", isTouched: false},
+    cityName: {value: "", isTouched: false},
+    phoneNumber: {value: "", isTouched: false},
+    email: {value: "", isTouched: false},
   },
-  error: false
+  error: false,
 }
 
+// empty fields
+// length phonenumbers
+// postcode validity
+// email has @ and "." 
 function reducer(state, action) {
   switch (action.type) {
-    case 'FULL_NAME':
-      return { ...state, test: "Test Pass"};
- 
-  }
-
-  // switch(expression) {
-  //   case x:
-  //     // code block
-  //     break;
-  //   case y:
-  //     // code block
-  //     break;
-  //   default:
-  //     // code block
-  // }
-
-  return state;  
-
+    case "SET_FIELD_VALUE":
+      return {
+        ...state,
+        [action.field]: action.value
+      };
+      case "INPUT_CHECKED":
+        return 
+      default:
+        return state;
+  } 
 }
 
 export default function ContactForm() {
-  //  const [fullName, setFullName]= useState();
   const [state, dispatch] = useReducer(reducer, initialState);
-    console.log(state)
+    //console.log(state)
 
 
   function handleChange(e) {
-    console.log(e.target.value);
-    console.log(e.target.name);
-    dispatch({type: "FULL_NAME"})
-
-    // function reducer(state, action) {
-    // switch (action.type){ 
-    //    case 'FULL_NAME': 
-    //      return { ...state, fullName: state.fullName};
-    //    case 'POSTCODE':}
-    // use switch 
-
+    // console.log(e.target.value);
+    // console.log(e.target.name);
+    dispatch({type: "SET_FIELD_VALUE", field: e.target.name, value: e.target.value })
+    if (e.target.value){
+      console.log("value")
+    } else {
+      console.log("error")
+    }
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    
+    console.log(state);
+    // create a function to add the error handling func
+    // is the field empty? 
   }
-
+   
   return (
     <>
       <h2 className="designBooking-title">Design Booking</h2>
       <form className="designBooking-form">
+
         <fieldset className="designBooking-fieldset">
+
           <legend className="designBooking-legend">
             Personal Information:
           </legend>
+
           <div className="designBooking-container">
-            <label className="designBooking-label">
-              Full Name
-              <input
-                type="text"
-                name="fullName"
-                onChange={(event) => {
-                  handleChange(event);
-                }}
-              />
-            </label>
-            
-          </div>
-        </fieldset>
+                        <label className="designBooking-label">
+                          Full Name
+                          <input
+                            type="text"
+                            name="fullName"
+                            value= {state.fullName}
+                            onChange={(event) => {
+                              handleChange(event);
+                            }}
+                          />
+                        </label>
+                        <label>
+                        Postcode
+                        <input
+                          type="text"
+                          name="postcode"
+                          value={state.postcode}
+                          onChange={handleChange}
+                        />
+                      </label>
+                      <label>
+                        House/Flat Number and Street Name
+                        <input
+                          type="text"
+                          name="addressNumber"
+                          value={state.addressNumber}
+                          onChange={handleChange}
+                        />
+                      </label>
+                      <label>
+                        City
+                        <input
+                          type="text"
+                          name="cityName"
+                          value={state.cityName}
+                          onChange={handleChange}
+                        />
+                        {state.isTouched && !state.cityName ? console.log("well done!") : (<p className="errorMessage">Error - The fields is empty</p>)}
+                      </label>
+                      </div>
+                    </fieldset>
+
+                    <fieldset>
+                      <div className="designBooking-container"> 
+                      <legend>Contact Information:</legend>
+                      <label>
+                        Phone Number
+                        <input
+                          type="number"
+                          name="phoneNumber"
+                          value={state.phoneNumber}
+                          onChange={handleChange}
+                        />
+                      </label>
+                      <label>
+                        Email Address
+                        <input
+                          type="email"
+                          name="emailAddress"
+                          value={state.email}
+                          onChange={handleChange} /> 
+                        </label>
+                        </div>
+          </fieldset>
+
         <fieldset className="designBooking-fieldset">
           <legend className="designBooking-legend">Contact Information:</legend>
           
@@ -94,22 +142,3 @@ export default function ContactForm() {
     </>
   );
 }
-
-
-    // if (e.target.name === "fullName") {
-    //   setFullName(e.target.value);
-    // } else if (e.target.name === "postcode") {
-    //   setPostcode(e.target.value);
-    // } else if (e.target.name === "addressNumber") {
-    //   setAddressNumber(e.target.value);
-    // } else if (e.target.name === "cityName") {
-    //   setCityName(e.target.value);
-    // } else if (e.target.name === "phoneNumber") {
-    //   setNumber(e.target.value);
-    // } else if (e.target.name === "emailAddress") {
-    //   setEmail(e.target.value);
-    // } else {
-    //   console.log("the field is empty");
-    // }
-
-   //   
