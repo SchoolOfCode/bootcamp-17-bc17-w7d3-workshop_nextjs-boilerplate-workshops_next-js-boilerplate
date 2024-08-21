@@ -1,49 +1,62 @@
 "use client";
 import { useState, useEffect } from "react";
+
 export default function ContactForm() {
-  const [fullName, setFullName] = useState("");
-  const [postcode, setPostcode] = useState("");
-  const [addressNumber, setAddressNumber] = useState("");
-  const [cityName, setCityName] = useState("");
-  const [number, setNumber] = useState("");
-  const [email, setEmail] = useState("");
+  const [fullName, setFullName] = useState(false);
+  const [postcode, setPostcode] = useState(false);
+  const [addressNumber, setAddressNumber] = useState(false);
+  const [cityName, setCityName] = useState(false);
+  const [number, setNumber] = useState(false);
+  const [email, setEmail] = useState(false);
   const [formValid, setFormValid] = useState(null);
 
   function handleChange(e) {
     console.log(e.target.value);
     console.log(e.target.name);
 
-    if (e.target.name === "fullName") {
-      setFullName(e.target.value);
-    } else if (e.target.name === "postcode") {
-      setPostcode(e.target.value);
-    } else if (e.target.name === "addressNumber") {
-      setAddressNumber(e.target.value);
-    } else if (e.target.name === "cityName") {
-      setCityName(e.target.value);
-    } else if (e.target.name === "phoneNumber") {
-      setNumber(e.target.value);
-    } else if (e.target.name === "emailAddress") {
-      setEmail(e.target.value);
-    } else {
-      console.log("the field is empty");
-    }
-
-    if (
-      fullName &&
-      postcode &&
-      addressNumber &&
-      cityName &&
-      number &&
-      email != 0
-    ) {
-      console.log("all done!");
-    } else {
-      console.log("At least one of the fields is empty");
-    }
+switch (e.target.name) {
+    case "fullName":
+        setFullName(e.target.value);
+        break;
+    case "postcode":
+        setPostcode(e.target.value);
+        break;
+    case "addressNumber":
+        setAddressNumber(e.target.value);
+        break;
+    case "cityName":
+        setCityName(e.target.value);
+        break;
+    case "phoneNumber":
+        setNumber(e.target.value);
+        break;
+    case "emailAddress":
+        setEmail(e.target.value);
+        break;
+    default:
+        console.log("the field is empty");
+        break;
+}
   }
 
-  console.log(fullName, postcode, addressNumber, cityName, number, email);
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (
+          fullName &&
+          postcode &&
+          addressNumber &&
+          cityName &&
+          number &&
+          email
+        ) {
+          console.log("all done!");
+          setFormValid(true);
+        } else {
+          console.log("At least one of the fields is empty");
+          setFormValid(false);
+        };
+        console.log(fullName, postcode, addressNumber, cityName, number, email)
+  }
 
   return (
     <>
@@ -53,7 +66,7 @@ export default function ContactForm() {
           <legend className="designBooking-legend">
             Personal Information:
           </legend>
-          <div class="designBooking-container">
+          <div className="designBooking-container">
             <label className="designBooking-label">
               Full Name
               <input
@@ -98,7 +111,7 @@ export default function ContactForm() {
         </fieldset>
         <fieldset className="designBooking-fieldset">
           <legend className="designBooking-legend">Contact Information:</legend>
-          <div class="designBooking-container">
+          <div className="designBooking-container">
             <label className="designBooking-label">
               Phone Number
               <input
@@ -121,35 +134,32 @@ export default function ContactForm() {
             </label>
           </div>
         </fieldset>
-        <button className="designBooking-button" type="submit" value="submit">
+        <button className="designBooking-button" type="submit" value="submit" onClick={handleSubmit}>
           Submit
         </button>
+        {formValid === false && 
+          (<p className="errorMessage">Error - At least one of the fields is empty</p>)
+        }
       </form>
     </>
   );
 }
 
-// this is how we could use Switch loop instead of If
-// switch (e.target.name) {
-//     case "fullName":
-//         setFullName(e.target.value);
-//         break;
-//     case "postCode":
-//         setPostcode(e.target.value);
-//         break;
-//     case "addressNumber":
-//         setAddressNumber(e.target.value);
-//         break;
-//     case "cityName":
-//         setCityName(e.target.value);
-//         break;
-//     case "phoneNumber":
-//         setNumber(e.target.value);
-//         break;
-//     case "emailAddress":
-//         setEmail(e.target.value);
-//         break;
-//     default:
-//         console.log("the field is empty");
-//         break;
-// }
+
+    // if (e.target.name === "fullName") {
+    //   setFullName(e.target.value);
+    // } else if (e.target.name === "postcode") {
+    //   setPostcode(e.target.value);
+    // } else if (e.target.name === "addressNumber") {
+    //   setAddressNumber(e.target.value);
+    // } else if (e.target.name === "cityName") {
+    //   setCityName(e.target.value);
+    // } else if (e.target.name === "phoneNumber") {
+    //   setNumber(e.target.value);
+    // } else if (e.target.name === "emailAddress") {
+    //   setEmail(e.target.value);
+    // } else {
+    //   console.log("the field is empty");
+    // }
+
+   //   
