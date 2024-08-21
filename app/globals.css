@@ -75,6 +75,43 @@ body {
   padding: 0 0 4rem 0;
 }
 
+/* Design Form */
+
+.designBooking-title {
+  background-color: #f1911b;
+  font-weight: 600;
+  padding: 24px 16px;
+}
+.designBooking-fieldset {
+  border: none;
+}
+.designBooking-legend {
+  padding: 16px 0;
+}
+.designBooking-container {
+  box-sizing: border-box;
+  background-color: rgb(230, 230, 230);
+  padding: 8px 16px;
+}
+.designBooking-label {
+  display: block;
+  margin: 16px 0;
+  font-size: 12px;
+}
+.designBooking-label input {
+  display: block;
+  margin: 4px 0;
+  width: 100%;
+}
+.designBooking-button {
+  box-sizing: border-box;
+  width: calc(100vw - 52px);
+  border: none;
+  background-color: #f1911b;
+  padding: 16px;
+  margin: 32px 16px;
+}
+
 /* HERO */
 
 .hero-image {
@@ -100,7 +137,7 @@ body {
 
 /*REVIEW*/
 
-.reviewButtonContainer{
+.reviewButtonContainer {
   display: flex;
   justify-content: space-evenly;
 }
@@ -119,7 +156,7 @@ body {
 }
 
 .reviewButton {
-  border: none; 
+  border: none;
   height: 3rem;
   width: 9rem;
   background-color: grey;
@@ -141,11 +178,10 @@ body {
 
 .conditionalInfo {
   display: flex;
-  width:100%;
+  width: 100%;
   justify-content: flex-end;
   font-size: 1.3rem;
   text-decoration: underline;
- 
 }
 
 /* MAIN */
