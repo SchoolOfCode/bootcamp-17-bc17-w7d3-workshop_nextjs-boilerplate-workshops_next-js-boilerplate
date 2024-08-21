@@ -101,7 +101,7 @@ export default function ContactForm() {
     dispatch({ type: "VALIDATE_FORM", errors, formError });
 
     if (!formError) {
-      console.log("Form submitted successfully:", state.data);  // Proceed with form submission ???? maybe add a confirmation here 
+      console.log("Form submitted successfully:", state.data); // Proceed with form submission ???? maybe add a confirmation here
     } else {
       console.log("Form submission failed:", state.data);
     }
@@ -112,7 +112,9 @@ export default function ContactForm() {
       <h2 className="designBooking-title">Design Booking</h2>
       <form className="designBooking-form" onSubmit={handleSubmit}>
         <fieldset className="designBooking-fieldset">
-          <legend className="designBooking-legend">Personal Information:</legend>
+          <legend className="designBooking-legend">
+            Personal Information:
+          </legend>
           <div className="designBooking-container">
             <label className="designBooking-label">
               Full Name
@@ -126,7 +128,7 @@ export default function ContactForm() {
                 <p className="errorMessage">{state.data.fullName.error}</p>
               )}
             </label>
-            <label>
+            <label className="designBooking-label">
               Postcode
               <input
                 type="text"
@@ -138,7 +140,7 @@ export default function ContactForm() {
                 <p className="errorMessage">{state.data.postcode.error}</p>
               )}
             </label>
-            <label>
+            <label className="designBooking-label">
               House/Flat Number and Street Name
               <input
                 type="text"
@@ -150,7 +152,7 @@ export default function ContactForm() {
                 <p className="errorMessage">{state.data.addressNumber.error}</p>
               )}
             </label>
-            <label>
+            <label className="designBooking-label">
               City
               <input
                 type="text"
@@ -165,10 +167,10 @@ export default function ContactForm() {
           </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset className="designBooking-fieldset">
+          <legend className="designBooking-legend">Contact Information:</legend>
           <div className="designBooking-container">
-            <legend>Contact Information:</legend>
-            <label>
+            <label className="designBooking-label">
               Phone Number
               <input
                 type="text"
@@ -180,7 +182,7 @@ export default function ContactForm() {
                 <p className="errorMessage">{state.data.phoneNumber.error}</p>
               )}
             </label>
-            <label>
+            <label className="designBooking-label">
               Email Address
               <input
                 type="email"
