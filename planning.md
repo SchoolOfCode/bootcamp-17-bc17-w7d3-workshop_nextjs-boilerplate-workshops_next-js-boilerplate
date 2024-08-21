@@ -37,3 +37,9 @@
     - create link on homepage menu "Book Consultation" ✅
     - Create a simple form that matches the designs give on google image (place on figma)
         - Form > Fieldset > Legend > label > input
+
+- delete fields bar one
+    - remove state
+    - remove logic
+    - remove html
+- 
