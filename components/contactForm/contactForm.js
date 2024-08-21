@@ -41,7 +41,7 @@ export default function ContactForm() {
     // console.log(e.target.name);
     dispatch({type: "SET_FIELD_VALUE", field: e.target.name, value: e.target.value })
     if (e.target.value){
-      console.log("value")
+      isTouched
     } else {
       console.log("error")
     }
