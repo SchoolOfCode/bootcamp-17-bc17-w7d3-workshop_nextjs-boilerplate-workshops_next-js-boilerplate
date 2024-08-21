@@ -17,10 +17,8 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case 'FULL_NAME':
-    console.log("onChange")
-    
-      return {state};
-    
+      return { ...state, test: "Test Pass"};
+ 
   }
 
   // switch(expression) {
@@ -47,7 +45,13 @@ export default function ContactForm() {
   function handleChange(e) {
     console.log(e.target.value);
     console.log(e.target.name);
-  
+    dispatch({type: "FULL_NAME"})
+
+    // function reducer(state, action) {
+    // switch (action.type){ 
+    //    case 'FULL_NAME': 
+    //      return { ...state, fullName: state.fullName};
+    //    case 'POSTCODE':}
     // use switch 
 
   }
