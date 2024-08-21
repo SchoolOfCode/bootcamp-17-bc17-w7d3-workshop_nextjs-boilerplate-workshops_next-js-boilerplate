@@ -17,9 +17,22 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case 'FULL_NAME':
-    console.log(state)
-      return {state}
+    console.log("onChange")
+    
+      return {state};
+    
   }
+
+  // switch(expression) {
+  //   case x:
+  //     // code block
+  //     break;
+  //   case y:
+  //     // code block
+  //     break;
+  //   default:
+  //     // code block
+  // }
 
   return state;  
 
