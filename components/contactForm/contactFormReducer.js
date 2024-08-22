@@ -10,7 +10,7 @@ const initialState = {
     phone: { value: "", isValid: true },
     email: { value: "", isValid: true },
   },
-  status: "Submit"
+  status: "Submit",
 };
 
 function reducer(state, action) {
@@ -27,7 +27,6 @@ function reducer(state, action) {
         },
       };
     case "INPUT_CHECKED":
-      console.log(state);
       if (state.data[action.field].value) {
         return {
           ...state,
@@ -48,11 +47,11 @@ function reducer(state, action) {
               ...state.data[action.field],
               isValid: false,
             },
-          }
+          },
         };
       }
 
-      case "SUBMIT_STATUS":
+    case "SUBMIT_STATUS":
       return {
         ...state,
         status: "Submitting",
@@ -72,6 +71,16 @@ function reducer(state, action) {
       return state;
   }
 }
+
+async function getPostcode() {
+  fetch("https//api.postcodes.io/postcodes")
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      return data
+    })
+}
+
 
 export default function ContactForm() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -95,8 +104,7 @@ export default function ContactForm() {
   function handleSubmit(e) {
     e.preventDefault();
 
-
-    dispatch({ type: "VALIDATE_FORM"});
+    dispatch({ type: "VALIDATE_FORM" });
 
     // button status
 
@@ -105,6 +113,9 @@ export default function ContactForm() {
     });
 
     setTimeout(() => {
+      
+      getPostcode()
+
       if (
         !state.data.fullName.value ||
         !state.data.postCode.value ||
@@ -117,7 +128,6 @@ export default function ContactForm() {
           type: "ERROR_STATUS",
         });
       } else {
-       
         dispatch({
           type: "SUCCESS_STATUS",
         });
