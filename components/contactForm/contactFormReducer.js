@@ -1,122 +1,202 @@
 "use client";
-import { useReducer } from "react";
+import { useState, useEffect, useReducer } from "react";
 
-//initial state
-const formData = {
-  fullName: "",
-  postcode: "",
-  addressNumber: "",
-  cityName: "",
-  phoneNumber: "",
-  emailAddress: "",
+const initialState = {
+  data: {
+    fullName: { value: "", isValid: true },
+    postCode: { value: "", isValid: true },
+    address: { value: "", isValid: true },
+    city: { value: "", isValid: true },
+    phone: { value: "", isValid: true },
+    email: { value: "", isValid: true },
+  },
 };
 
-//build reducer
 function reducer(state, action) {
-  if (action.type === "GET_INPUT_VALUE") {
-    console.log(state);
-    console.log(action);
-    return {
-      ...state,
-      [action.field]: action.value,
-    };
+  switch (action.type) {
+    case "SET_FIELD_VALUE":
+      return {
+        ...state,
+        data: {
+          ...state.data,
+          [action.field]: {
+            ...state.data[action.field],
+            value: action.value,
+          },
+        },
+      };
+    case "INPUT_CHECKED":
+      console.log(state);
+      if (state.data[action.field].value) {
+        console.log("the field is provided");
+        return {
+          ...state,
+          data: {
+            ...state.data,
+            [action.field]: {
+              ...state.data[action.field],
+              isValid: true,
+            },
+          },
+        };
+      } else {
+        console.log("the field is empty");
+        return {
+          ...state,
+          data: {
+            ...state.data,
+            [action.field]: {
+              ...state.data[action.field],
+              isValid: false,
+            },
+          },
+        };
+      }
+
+    default:
+      return state;
   }
-  return state;
 }
 
 export default function ContactForm() {
-  // init reducer
-  const [state, dispatch] = useReducer(reducer, formData);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-  // get input value
   function handleChange(e) {
-    const name = e.target.name;
-    const value = e.target.value;
-    dispatch({ type: "GET_INPUT_VALUE", field: name, value: value });
-    console.log(name, value);
+    dispatch({
+      type: "SET_FIELD_VALUE",
+      field: e.target.name,
+      value: e.target.value,
+    });
+  }
+
+  function handleTouch(e) {
+    dispatch({
+      type: "INPUT_CHECKED",
+      field: e.target.name,
+      value: true,
+    });
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (
-      state.fullName &&
-      state.postcode &&
-      state.addressNumber &&
-      state.cityName &&
-      state.phoneNumber &&
-      state.emailAddress
-    ) {
-      console.log("submitted:", state);
-    } else {
-      console.log("the form is incomplete");
-    }
+    console.log(state);
   }
 
   return (
     <>
-      <h2>Design Booking</h2>
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <legend>Personal Information:</legend>
-          <label>
-            Full Name
-            <input
-              type="text"
-              name="fullName"
-              value={state.fullName}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Postcode
-            <input
-              type="text"
-              name="postcode"
-              value={state.postcode}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            House/Flat Number and Street Name
-            <input
-              type="text"
-              name="addressNumber"
-              value={state.addressNumber}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            City
-            <input
-              type="text"
-              name="cityName"
-              value={state.cityName}
-              onChange={handleChange}
-            />
-          </label>
+      <h2 className="designBooking-title">Design Booking</h2>
+      <form className="designBooking-form">
+        <fieldset className="designBooking-fieldset">
+          <legend className="designBooking-legend">
+            Personal Information:
+          </legend>
+          <div className="designBooking-container">
+            <label className="designBooking-label">
+              Full Name
+              <input
+                type="text"
+                name="fullName"
+                // value={state.data.fullName.value}
+                onChange={(event) => {
+                  handleChange(event);
+                }}
+                onBlur={(event) => {
+                  handleTouch(event);
+                }}
+              />
+              {!state.data.fullName.isValid && (
+                <span>the input is not valid</span>
+              )}
+            </label>
+            <label className="designBooking-label">
+              Postcode
+              <input
+                type="text"
+                name="postCode"
+                onChange={(event) => {
+                  handleChange(event);
+                }}
+                onBlur={(event) => {
+                  handleTouch(event);
+                }}
+              />
+              {!state.data.postCode.isValid && (
+                <span>the input is not valid</span>
+              )}
+            </label>
+
+            <label className="designBooking-label">
+              Address
+              <input
+                type="text"
+                name="address"
+                onChange={(event) => {
+                  handleChange(event);
+                }}
+                onBlur={(event) => {
+                  handleTouch(event);
+                }}
+              />
+              {!state.data.address.isValid && (
+                <span>the input is not valid</span>
+              )}
+            </label>
+
+            <label className="designBooking-label">
+              City
+              <input
+                type="text"
+                name="city"
+                onChange={(event) => {
+                  handleChange(event);
+                }}
+                onBlur={(event) => {
+                  handleTouch(event);
+                }}
+              />
+              {!state.data.city.isValid && <span>the input is not valid</span>}
+            </label>
+          </div>
         </fieldset>
-        <fieldset>
-          <legend>Contact Information:</legend>
-          <label>
-            Phone Number
-            <input
-              type="number"
-              name="phoneNumber"
-              value={state.phoneNumber}
-              onChange={handleChange}
-            />
-          </label>
-          <label>
-            Email Address
-            <input
-              type="email"
-              name="emailAddress"
-              value={state.emailAddress}
-              onChange={handleChange}
-            />
-          </label>
+        <fieldset className="designBooking-fieldset">
+          <legend className="designBooking-legend">Contact Information:</legend>
+          <div className="designBooking-container">
+            <label className="designBooking-label">
+              Phone
+              <input
+                type="text"
+                name="phone"
+                onChange={(event) => {
+                  handleChange(event);
+                }}
+                onBlur={(event) => {
+                  handleTouch(event);
+                }}
+              />
+              {!state.data.phone.isValid && <span>the input is not valid</span>}
+            </label>
+            <label className="designBooking-label">
+              Email
+              <input
+                type="text"
+                name="email"
+                onChange={(event) => {
+                  handleChange(event);
+                }}
+                onBlur={(event) => {
+                  handleTouch(event);
+                }}
+              />
+              {!state.data.email.isValid && <span>the input is not valid</span>}
+            </label>
+          </div>
         </fieldset>
-        <button type="submit" value="submit">
+        <button
+          className="designBooking-button"
+          type="submit"
+          value="submit"
+          onClick={handleSubmit}
+        >
           Submit
         </button>
       </form>
