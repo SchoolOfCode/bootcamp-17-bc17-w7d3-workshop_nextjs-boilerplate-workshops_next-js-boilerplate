@@ -11,7 +11,7 @@ const initialState = {
     email: { value: "", isTouched: false, error: "" },
   },
   formError: false,
-  status: "editing",
+  status: "none",
 };
 
 // Reducer function to handle state changes based on dispatched actions.
@@ -138,6 +138,10 @@ export default function ContactForm() {
         !state.data.email.value
       ) {
         console.log("test");
+        // we return a console log test if we receive an error
+        dispatch ({
+          type: "SUCCESS_STATUS"
+        });
       }
     }, 2000);
   }
