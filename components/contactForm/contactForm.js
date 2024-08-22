@@ -1,5 +1,9 @@
+/* This is a test code - use contactFormReducer instead 
+
 "use client";
 import { useReducer, useState, useEffect } from "react";
+
+
 
 const initialState = {
   data: {
@@ -256,3 +260,6 @@ export default function ContactForm() {
     </>
   );
 }
+
+
+*/

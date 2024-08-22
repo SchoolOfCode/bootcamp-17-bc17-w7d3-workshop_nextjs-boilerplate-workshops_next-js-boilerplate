@@ -10,6 +10,7 @@ const initialState = {
     phone: { value: "", isValid: true },
     email: { value: "", isValid: true },
   },
+  status: "Submit"
 };
 
 function reducer(state, action) {
@@ -28,7 +29,6 @@ function reducer(state, action) {
     case "INPUT_CHECKED":
       console.log(state);
       if (state.data[action.field].value) {
-        console.log("the field is provided");
         return {
           ...state,
           data: {
@@ -40,7 +40,6 @@ function reducer(state, action) {
           },
         };
       } else {
-        console.log("the field is empty");
         return {
           ...state,
           data: {
@@ -49,9 +48,25 @@ function reducer(state, action) {
               ...state.data[action.field],
               isValid: false,
             },
-          },
+          }
         };
       }
+
+      case "SUBMIT_STATUS":
+      return {
+        ...state,
+        status: "Submitting",
+      };
+    case "SUCCESS_STATUS":
+      return {
+        ...state,
+        status: "Submitted",
+      };
+    case "ERROR_STATUS":
+      return {
+        ...state,
+        status: "Failed to submit",
+      };
 
     default:
       return state;
@@ -79,7 +94,35 @@ export default function ContactForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(state);
+
+
+    dispatch({ type: "VALIDATE_FORM"});
+
+    // button status
+
+    dispatch({
+      type: "SUBMIT_STATUS",
+    });
+
+    setTimeout(() => {
+      if (
+        !state.data.fullName.value ||
+        !state.data.postCode.value ||
+        !state.data.address.value ||
+        !state.data.city.value ||
+        !state.data.phone.value ||
+        !state.data.email.value
+      ) {
+        dispatch({
+          type: "ERROR_STATUS",
+        });
+      } else {
+       
+        dispatch({
+          type: "SUCCESS_STATUS",
+        });
+      }
+    }, 2000);
   }
 
   return (
@@ -197,8 +240,15 @@ export default function ContactForm() {
           value="submit"
           onClick={handleSubmit}
         >
-          Submit
+          {state.status}
         </button>
+        {state.status === "Submitting" && <span>Submitting 🔄</span>}
+        {state.status === "Submitted" && (
+          <span className="pass">Submitted ✅</span>
+        )}
+        {state.status === "Failed to submit" && (
+          <span className="fail">Failed to submit ❌</span>
+        )}
       </form>
     </>
   );
