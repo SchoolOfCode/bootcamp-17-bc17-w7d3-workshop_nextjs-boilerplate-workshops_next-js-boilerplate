@@ -11,7 +11,7 @@ const initialState = {
     email: { value: "", isTouched: false, error: "" },
   },
   formError: false,
-  status: "editing"
+  status: "editing",
 };
 
 // Reducer function to handle state changes based on dispatched actions.
@@ -34,25 +34,25 @@ function reducer(state, action) {
       return {
         ...state,
         data: action.errors, // Update the data object with errors the validation checks
-        formError: action.formError, // Update the form error 
+        formError: action.formError, // Update the form error
       };
     case "SUBMIT_STATUS":
       return {
         ...state,
-        status: "submitting"
+        status: "submitting",
       };
     case "SUCCESS_STATUS":
       return {
         ...state,
-        status: "success"
+        status: "success",
       };
     case "ERROR_STATUS":
       return {
         ...state,
-        status: "error"
+        status: "error",
       };
     default:
-      return state; 
+      return state;
   }
 }
 
@@ -61,7 +61,7 @@ export default function ContactForm() {
 
   function validateField(fieldName, value) {
     let error = "";
-// Error if the field is empty
+    // Error if the field is empty
     switch (fieldName) {
       case "fullName":
       case "postcode":
@@ -69,7 +69,7 @@ export default function ContactForm() {
       case "cityName":
         if (!value) error = "This field cannot be empty.";
         break;
-// Error if the phone number is empty.
+      // Error if the phone number is empty.
       case "phoneNumber":
         if (!value) {
           error = "Phone number is required.";
@@ -77,8 +77,8 @@ export default function ContactForm() {
           error = "Phone number must be between 10 and 15 digits.";
         }
         break;
-// Error if the email is empty
-// Error if the email is invalid
+      // Error if the email is empty
+      // Error if the email is invalid
       case "email":
         if (!value) {
           error = "Email is required.";
@@ -103,7 +103,7 @@ export default function ContactForm() {
   function handleSubmit(e) {
     e.preventDefault();
 
-    let formError = false; 
+    let formError = false;
     const errors = { ...state.data };
 
     Object.keys(errors).forEach((key) => {
@@ -119,26 +119,25 @@ export default function ContactForm() {
     dispatch({ type: "VALIDATE_FORM", errors, formError });
 
     if (!formError) {
-      console.log("Form submitted successfully:", state.data);  // Proceed with form submission ???? maybe add a confirmation here 
+      console.log("Form submitted successfully:", state.data); // Proceed with form submission ???? maybe add a confirmation here
     } else {
       console.log("Form submission failed:", state.data);
     }
-  // button status  
+    // button status
     dispatch({
-      type: "SUBMIT_STATUS"
+      type: "SUBMIT_STATUS",
     });
 
     setTimeout(() => {
-
-      if(state.data.fullName || 
-        state.data.postcode || 
-        state.data.addressNumber || 
-        state.data.cityName || 
-        state.data.phoneNumber || 
-        state.data.email 
-      ) 
-      {
-        console.log("test")
+      if (
+        !state.data.fullName.value ||
+        !state.data.postcode.value ||
+        !state.data.addressNumber.value ||
+        !state.data.cityName.value ||
+        !state.data.phoneNumber.value ||
+        !state.data.email.value
+      ) {
+        console.log("test");
       }
     }, 2000);
   }
@@ -148,7 +147,9 @@ export default function ContactForm() {
       <h2 className="designBooking-title">Design Booking</h2>
       <form className="designBooking-form" onSubmit={handleSubmit}>
         <fieldset className="designBooking-fieldset">
-          <legend className="designBooking-legend">Personal Information:</legend>
+          <legend className="designBooking-legend">
+            Personal Information:
+          </legend>
           <div className="designBooking-container">
             <label className="designBooking-label">
               Full Name
@@ -162,7 +163,7 @@ export default function ContactForm() {
                 <p className="errorMessage">{state.data.fullName.error}</p>
               )}
             </label>
-            <label>
+            <label className="designBooking-label">
               Postcode
               <input
                 type="text"
@@ -174,7 +175,7 @@ export default function ContactForm() {
                 <p className="errorMessage">{state.data.postcode.error}</p>
               )}
             </label>
-            <label>
+            <label className="designBooking-label">
               House/Flat Number and Street Name
               <input
                 type="text"
@@ -186,7 +187,7 @@ export default function ContactForm() {
                 <p className="errorMessage">{state.data.addressNumber.error}</p>
               )}
             </label>
-            <label>
+            <label className="designBooking-label">
               City
               <input
                 type="text"
@@ -201,10 +202,10 @@ export default function ContactForm() {
           </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset className="designBooking-fieldset">
+          <legend className="designBooking-legend">Contact Information:</legend>
           <div className="designBooking-container">
-            <legend>Contact Information:</legend>
-            <label>
+            <label className="designBooking-label">
               Phone Number
               <input
                 type="text"
@@ -216,7 +217,7 @@ export default function ContactForm() {
                 <p className="errorMessage">{state.data.phoneNumber.error}</p>
               )}
             </label>
-            <label>
+            <label className="designBooking-label">
               Email Address
               <input
                 type="email"

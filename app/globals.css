@@ -98,9 +98,10 @@ body {
   font-size: 12px;
 }
 .designBooking-label input {
+  box-sizing: border-box;
   display: block;
   margin: 4px 0;
-  padding: 8px 0;
+  padding: 8px;
   width: calc(100% - 4px);
   border: none;
 }
