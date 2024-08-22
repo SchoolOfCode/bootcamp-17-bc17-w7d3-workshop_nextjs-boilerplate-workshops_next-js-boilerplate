@@ -137,12 +137,13 @@ export default function ContactForm() {
         !state.data.phoneNumber.value ||
         !state.data.email.value
       ) {
-        console.log("test");
+        console.log("error");
         // we return a console log test if we receive an error
         dispatch ({
           type: "SUCCESS_STATUS"
         });
       }
+
     }, 2000);
   }
 
