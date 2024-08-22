@@ -11,7 +11,7 @@ const initialState = {
     email: { value: "", isTouched: false, error: "" },
   },
   formError: false,
-  status: "none",
+  status: "submit",
 };
 
 // Reducer function to handle state changes based on dispatched actions.
@@ -39,17 +39,17 @@ function reducer(state, action) {
     case "SUBMIT_STATUS":
       return {
         ...state,
-        status: "submitting",
+        status: "Submitting",
       };
     case "SUCCESS_STATUS":
       return {
         ...state,
-        status: "success",
+        status: "Submitted",
       };
     case "ERROR_STATUS":
       return {
         ...state,
-        status: "error",
+        status: "Failed to submit",
       };
     default:
       return state;
@@ -124,6 +124,7 @@ export default function ContactForm() {
       console.log("Form submission failed:", state.data);
     }
     // button status
+    console.log("submitting");
     dispatch({
       type: "SUBMIT_STATUS",
     });
@@ -139,6 +140,11 @@ export default function ContactForm() {
       ) {
         console.log("error");
         // we return a console log test if we receive an error
+        dispatch ({
+          type: "ERROR_STATUS"
+        });
+      } else {
+        console.log("success");
         dispatch ({
           type: "SUCCESS_STATUS"
         });
@@ -238,8 +244,9 @@ export default function ContactForm() {
         </fieldset>
 
         <button className="designBooking-button" type="submit">
-          Submit
+          {state.status}
         </button>
+        <span> {state.status ===  }</span>
       </form>
     </>
   );
