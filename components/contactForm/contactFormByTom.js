@@ -1,60 +1,90 @@
 'use client';
 
-import { useState } from 'react';
+import { useReducer } from 'react';
 
 import styles from './styles.module.css';
 
-export default function ContactForm() {
+const initialState = {
+    data: {
+        fullName: "",
+        postcode: ""
+    },
+    status: "editing"
+};
 
-    const [ fullName, setFullName ] = useState("");
-    const [ postcode, setPostcode ] = useState("");
-    const [ street, setStreet ] = useState("");
-    const [ city, setCity ] = useState("");
-    const [ phoneNumber, setPhoneNumber ] = useState("");
-    const [ email, setEmail ] = useState("");
+function reducer(state, action) {
 
-    const [ error, setError ] = useState(false);
+    switch(action.type) {
+        case "CHANGE_FIELD":
+            return {
+                ...state,
+                data: {
+                    ...state.data,
+                    [action.payload.fieldName]: action.payload.fieldValue
+                }
+            };
+        case 'ERROR':
+            return {
+                ...state,
+                status: "error"
+            };
+        case "FORM_SUBMITTING":
+            return {
+                ...state,
+                status: "submitting"
+            };
+        case "FORM_SUCCESS":
+            return {
+                ...state,
+                status: "success"
+            };
+        default:
+            return state;
+    }
+
+}
+
+export default function ContactFormOne() {
+
+    const [ state, dispatch ] = useReducer(reducer, initialState);
+
+    console.log(state);
 
     function handleChange(event) {
 
-        if (event.target.name === "fullName") {
-            setFullName(event.target.value);
-        }
-
-        if (event.target.name === "postcode") {
-            setPostcode(event.target.value);
-        }
-
-        if (event.target.name === "street") {
-            setStreet(event.target.value);
-        }
-
-        if (event.target.name === "city") {
-            setCity(event.target.value);
-        }
-
-        if (event.target.name === "phoneNumber") {
-            setPhoneNumber(event.target.value);
-        }
-
-        if (event.target.name === "email") {
-            setEmail(event.target.value);
-        }
+        dispatch({
+            type: "CHANGE_FIELD",
+            payload: {
+                fieldName: event.target.name,
+                fieldValue: event.target.value
+            }
+        });
+        
     }
 
-    function handleSubmit(eventArgument) {
-        eventArgument.preventDefault();
-        
-        if (!fullName || !postcode || !street || !city || !phoneNumber || !email)  {
-            setError(true);
-            return;
-        }
+    function handleSubmit(event) {
+        event.preventDefault();
 
-        if (error) {
-            setError(false);
-        }
+        dispatch({
+            type: "FORM_SUBMITTING"
+        });
 
-        console.log("Data!!!!!!");
+        setTimeout(() => {
+
+            if (!state.data.fullName || !state.data.postcode)  {
+                dispatch({
+                    type: "ERROR",
+                });
+                return;
+            }
+
+            dispatch({
+                type: "FORM_SUCCESS"
+            });
+
+            console.log("Data!!!!!!");
+
+        }, 5000);
     }
 
     return (
@@ -69,37 +99,17 @@ export default function ContactForm() {
                         type="text"
                         name="fullName"
                         onChange={(event) => handleChange(event)}
-                        value={fullName}
+                        value={state.data.fullName}
                         className={styles.input}
                     />
                 </label>
 
                 <label className={styles.inputGroup}>Postcode:
-                    <input
+                    <input 
                         type="text"
                         name="postcode"
                         onChange={(event) => handleChange(event)}
-                        value={postcode}
-                        className={styles.input}
-                    />
-                </label>
-
-                <label className={styles.inputGroup}>House Number and Street Name:
-                    <input
-                        type="text"
-                        name="street"
-                        onChange={(event) => handleChange(event)}
-                        value={street}
-                        className={styles.input}
-                    />
-                </label>
-
-                <label className={styles.inputGroup}>City:
-                    <input
-                        type="text"
-                        name="city"
-                        onChange={(event) => handleChange(event)}
-                        value={city}
+                        value={state.data.postcode}
                         className={styles.input}
                     />
                 </label>
@@ -110,31 +120,13 @@ export default function ContactForm() {
 
                 <legend className={styles.groupTitle}>Contact Info:</legend>
 
-                <label className={styles.inputGroup}>Phone Number:
-                    <input 
-                        type="text"
-                        name="phoneNumber"
-                        onChange={(event) => handleChange(event)}
-                        value={phoneNumber}
-                        className={styles.input}
-                    />
-                </label>
-
-                <label className={styles.inputGroup}>Email:
-                    <input
-                        type="text"
-                        name="email"
-                        onChange={(event) => handleChange(event)}
-                        value={email}
-                        className={styles.input}
-                    />
-                </label>
-
             </fieldset>
 
-            { error && <p className={styles.error}>Error</p> }
+            { state.status === "error" && <p className={styles.error}>Error</p> }
 
             <button type="submit" className={styles.button}>Request Design Consultation</button>
+
+            { state.status }
 
         </form>
     )
