@@ -11,6 +11,7 @@ const initialState = {
     email: { value: "", isTouched: false, error: "" },
   },
   formError: false,
+  status: "editing"
 };
 
 // Reducer function to handle state changes based on dispatched actions.
@@ -34,6 +35,21 @@ function reducer(state, action) {
         ...state,
         data: action.errors, // Update the data object with errors the validation checks
         formError: action.formError, // Update the form error 
+      };
+    case "SUBMIT_STATUS":
+      return {
+        ...state,
+        status: "submitting"
+      };
+    case "SUCCESS_STATUS":
+      return {
+        ...state,
+        status: "success"
+      };
+    case "ERROR_STATUS":
+      return {
+        ...state,
+        status: "error"
       };
     default:
       return state; 
@@ -107,6 +123,22 @@ export default function ContactForm() {
     } else {
       console.log("Form submission failed:", state.data);
     }
+  // button status  
+    dispatch({
+      type: "SUBMIT_STATUS"
+    });
+
+    setTimeout(() => {
+
+      if(!state.data.fullName ||
+        !state.data.postcode || 
+        !state.data.addressNumber || 
+        !state.data.cityName || 
+        !state.data.phoneNumber || 
+        !state.data.email)
+        
+        {console.log("test")}
+    }, 2000);
   }
 
   return (
