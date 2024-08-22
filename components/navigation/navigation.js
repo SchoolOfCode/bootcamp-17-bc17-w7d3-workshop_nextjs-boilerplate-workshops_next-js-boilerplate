@@ -27,7 +27,7 @@ function Navigation() {
       </button>
 
       {stateMenu && (
-        <div class="navigation">
+        <div className="navigation">
           <button className="menu-button" onClick={closeMenu}>
             <ImageCard
               src="/images/menu-close-button.png"
@@ -48,7 +48,7 @@ function Navigation() {
             {" "}
             Founders{" "}
           </Link>
-          <Link className="" onClick={closeMenu} href="/form">
+          <Link className="navigation-link" onClick={closeMenu} href="/form">
             {" "}
             Form{" "}
           </Link>
