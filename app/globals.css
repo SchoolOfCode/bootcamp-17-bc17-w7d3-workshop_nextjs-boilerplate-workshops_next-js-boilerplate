@@ -105,6 +105,21 @@ body {
   width: calc(100% - 4px);
   border: none;
 }
+.designBooking-label p {
+  color: red;
+}
+
+.fail {
+  color: red;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+.pass {
+  color: green;
+  padding: 16px;
+  margin-bottom: 24px;
+}
+
 .designBooking-button {
   box-sizing: border-box;
   width: calc(100vw - 52px);

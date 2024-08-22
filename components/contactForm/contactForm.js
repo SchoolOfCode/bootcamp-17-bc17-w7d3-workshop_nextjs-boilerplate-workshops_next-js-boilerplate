@@ -140,16 +140,15 @@ export default function ContactForm() {
       ) {
         console.log("error");
         // we return a console log test if we receive an error
-        dispatch ({
-          type: "ERROR_STATUS"
+        dispatch({
+          type: "ERROR_STATUS",
         });
       } else {
         console.log("success");
-        dispatch ({
-          type: "SUCCESS_STATUS"
+        dispatch({
+          type: "SUCCESS_STATUS",
         });
       }
-
     }, 2000);
   }
 
@@ -246,7 +245,13 @@ export default function ContactForm() {
         <button className="designBooking-button" type="submit">
           {state.status}
         </button>
-        <span> {state.status ===  }</span>
+        {state.status === "Submitting" && <span>Submitting 🔄</span>}
+        {state.status === "Submitted" && (
+          <span className="pass">Submitted ✅</span>
+        )}
+        {state.status === "Failed to submit" && (
+          <span className="fail">Failed to submit ❌</span>
+        )}
       </form>
     </>
   );
