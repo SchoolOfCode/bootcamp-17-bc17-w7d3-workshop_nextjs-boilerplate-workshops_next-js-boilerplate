@@ -9,7 +9,7 @@ const initialState = {
         fullName: "",
         postcode: ""
     },
-    status: "editing"
+    status: ""
 };
 
 function reducer(state, action) {
