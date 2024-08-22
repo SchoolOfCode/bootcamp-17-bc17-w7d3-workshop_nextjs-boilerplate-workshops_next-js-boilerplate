@@ -105,21 +105,34 @@ body {
   width: calc(100% - 4px);
   border: none;
 }
-.designBooking-label p {
+.designBooking-label span {
   color: red;
 }
 
-.fail {
-  color: red;
+.submitting {
+  color: rgb(0, 76, 255);
   padding: 16px;
   margin-bottom: 24px;
   display: block;
+  width: calc(100vw - 52px);
+  background-color: rgb(210, 224, 255);
+}
+
+.fail {
+  color: rgb(255, 36, 36);
+  padding: 16px;
+  margin-bottom: 24px;
+  display: block;
+  width: calc(100vw - 52px);
+  background-color: rgb(255, 197, 197);
 }
 .pass {
-  color: green;
+  color: rgb(0, 173, 0);
   padding: 16px;
   margin-bottom: 24px;
   display: block;
+  width: calc(100vw - 52px);
+  background-color: rgb(215, 255, 215);
 }
 
 .designBooking-button {

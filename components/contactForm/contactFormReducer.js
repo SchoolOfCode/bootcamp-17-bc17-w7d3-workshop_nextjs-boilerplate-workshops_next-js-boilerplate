@@ -11,6 +11,7 @@ const initialState = {
     email: { value: "", isValid: true },
   },
   status: "Submit",
+  disabled: "",
 };
 
 function reducer(state, action) {
@@ -66,7 +67,12 @@ function reducer(state, action) {
         ...state,
         status: "Failed to submit",
       };
-
+    case "DISABLE_SUBMIT":
+      console.log("submit");
+      return {
+        ...state,
+        disabled: "disabled",
+      };
     default:
       return state;
   }
@@ -74,18 +80,20 @@ function reducer(state, action) {
 
 async function getPostcode() {
   fetch("https//api.postcodes.io/postcodes")
-    .then(response => response.json())
-    .then(data => {
-      console.log(data)
-      return data
-    })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      return data;
+    });
 }
-
 
 export default function ContactForm() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   function handleChange(e) {
+    if (e.target.name === "email" && !/\S+@\S+\.\S+/.test(e.target.value)) {
+      return;
+    }
     dispatch({
       type: "SET_FIELD_VALUE",
       field: e.target.name,
@@ -94,11 +102,21 @@ export default function ContactForm() {
   }
 
   function handleTouch(e) {
-    dispatch({
-      type: "INPUT_CHECKED",
-      field: e.target.name,
-      value: true,
-    });
+    if (!state.data[e.target.name.value]) {
+      console.log("false");
+      dispatch({
+        type: "INPUT_CHECKED",
+        field: e.target.name,
+        value: false,
+      });
+    } else {
+      console.log("true");
+      dispatch({
+        type: "INPUT_CHECKED",
+        field: e.target.name,
+        value: true,
+      });
+    }
   }
 
   function handleSubmit(e) {
@@ -113,8 +131,7 @@ export default function ContactForm() {
     });
 
     setTimeout(() => {
-      
-      getPostcode()
+      getPostcode();
 
       if (
         !state.data.fullName.value ||
@@ -130,6 +147,9 @@ export default function ContactForm() {
       } else {
         dispatch({
           type: "SUCCESS_STATUS",
+        });
+        dispatch({
+          type: "DISABLE_SUBMIT",
         });
       }
     }, 2000);
@@ -240,7 +260,7 @@ export default function ContactForm() {
                   handleTouch(event);
                 }}
               />
-              {!state.data.email.isValid && <span>the input is not valid</span>}
+              {!state.data.email.isValid && <span>the email is not valid</span>}
             </label>
           </div>
         </fieldset>
@@ -249,10 +269,13 @@ export default function ContactForm() {
           type="submit"
           value="submit"
           onClick={handleSubmit}
+          disabled={state.disabled}
         >
           {state.status}
         </button>
-        {state.status === "Submitting" && <span>Submitting 🔄</span>}
+        {state.status === "Submitting" && (
+          <span className="submitting">Submitting 🔄</span>
+        )}
         {state.status === "Submitted" && (
           <span className="pass">Submitted ✅</span>
         )}
