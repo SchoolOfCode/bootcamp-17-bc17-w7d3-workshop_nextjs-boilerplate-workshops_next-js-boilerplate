@@ -130,14 +130,16 @@ export default function ContactForm() {
 
     setTimeout(() => {
 
-      if(!state.data.fullName ||
-        !state.data.postcode || 
-        !state.data.addressNumber || 
-        !state.data.cityName || 
-        !state.data.phoneNumber || 
-        !state.data.email)
-        
-        {console.log("test")}
+      if(state.data.fullName || 
+        state.data.postcode || 
+        state.data.addressNumber || 
+        state.data.cityName || 
+        state.data.phoneNumber || 
+        state.data.email 
+      ) 
+      {
+        console.log("test")
+      }
     }, 2000);
   }
 
