@@ -22,7 +22,7 @@ function Founders() {
           <h2>Our craftmanship</h2>
           <p>
             Mike and Mandy studied and honed their craft under the fireplace
-            sensei Vik Von Blaze. Nothing gets delivered to a coustomare without
+            sensei Vik Von Blaze. Nothing gets delivered to a customer without
             their sign off{" "}
           </p>
           <ImageCard
@@ -36,8 +36,8 @@ function Founders() {
         <div className="founder-card">
           <h2>Our experience</h2>
           <p>
-            Numbers don't lie - we'we been around for 20+ years and have a long
-            list of happy cutomers who gladly reccomend us.
+            Numbers don't lie - we've been around for 20+ years and have a long
+            list of happy cutomers who gladly recommend us.
           </p>
           <ImageCard
             src="/images/founders-2.png"

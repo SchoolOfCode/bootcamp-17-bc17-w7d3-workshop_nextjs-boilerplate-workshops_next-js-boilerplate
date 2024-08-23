@@ -5,7 +5,7 @@ const contents = [
   {
     image: "/images/how-it-works-1.png",
     alt: "description",
-    title: "Give a a call...",
+    title: "Give us a call...",
     description:
       "Call us and book in a 'Design Consultation' on a date and time that suits you.",
     width: 340,
@@ -23,7 +23,7 @@ const contents = [
   {
     image: "/images/how-it-works-3.png",
     alt: "description",
-    title: "We reccomend...",
+    title: "We recommend...",
     description: "We send you a bespoke set of fireplace recommendations.",
     width: 340,
     height: 340,

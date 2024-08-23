@@ -50,7 +50,7 @@ function Navigation() {
           </Link>
           <Link className="navigation-link" onClick={closeMenu} href="/form">
             {" "}
-            Form{" "}
+            Design Consultation{" "}
           </Link>
         </div>
       )}

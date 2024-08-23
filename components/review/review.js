@@ -26,7 +26,7 @@ function Review() {
         <h2 className="reviewTitle"> Trusted </h2>
         <p className="reviewDesc">
           {" "}
-          We've got thousends of happy customers all over the UK. Choose your
+          We've got thousands of happy customers all over the UK. Choose your
           country to see the latest review.
         </p>
         <div className="reviewButtonContainer">
