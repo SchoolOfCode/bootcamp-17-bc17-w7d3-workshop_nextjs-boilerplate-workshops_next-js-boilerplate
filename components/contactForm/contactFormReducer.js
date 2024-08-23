@@ -79,7 +79,7 @@ function reducer(state, action) {
 }
 
 async function getPostcode() {
-  fetch("https//api.postcodes.io/postcodes")
+  fetch("https://api.postcodes.io/postcodes")
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -94,6 +94,9 @@ export default function ContactForm() {
     if (e.target.name === "email" && !/\S+@\S+\.\S+/.test(e.target.value)) {
       return;
     }
+    if (e.target.name === "phone" && !/^\d+$/.test(e.target.value)) {
+      return;
+    }; 
     dispatch({
       type: "SET_FIELD_VALUE",
       field: e.target.name,
@@ -246,7 +249,7 @@ export default function ContactForm() {
                   handleTouch(event);
                 }}
               />
-              {!state.data.phone.isValid && <span>the input is not valid</span>}
+              {!state.data.phone.isValid && <span>The phone number is not valid</span>}
             </label>
             <label className="designBooking-label">
               Email
