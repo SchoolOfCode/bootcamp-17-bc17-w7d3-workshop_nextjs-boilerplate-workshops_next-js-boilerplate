@@ -79,11 +79,13 @@ function reducer(state, action) {
 }
 
 async function getPostcode() {
-  fetch("https://api.postcodes.io/postcodes")
+  fetch(
+    `https://api.postcodes.io/postcodes/${"SE37SD"}`
+  )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
-      return data;
+      console.log(data.status)
+      return data.status;
     });
 }
 
