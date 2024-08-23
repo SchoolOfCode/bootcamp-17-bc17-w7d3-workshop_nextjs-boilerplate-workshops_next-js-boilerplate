@@ -277,7 +277,7 @@ export default function ContactForm() {
           {state.status}
         </button>
         {state.status === "Submitting" && (
-          <span className="submitting">Submitting 🔄</span>
+          <span className="submitting">Submitting... 🔄</span>
         )}
         {state.status === "Submitted" && (
           <span className="pass">Submitted ✅</span>
